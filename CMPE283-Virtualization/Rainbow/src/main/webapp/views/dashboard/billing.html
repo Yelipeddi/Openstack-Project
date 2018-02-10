@@ -1,0 +1,140 @@
+
+
+<div>
+    <snap-content snap-opt-tap-to-close="false">
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10" align="center">
+            <div class="panel panel-default" >
+
+                <div class="panel-heading">
+                    <div align="left"><h2> Bill for this month</h2></div></div>
+
+                <div class="panel-body">
+                    <div class="table-responsive" >
+                        <table class="table table-bordered table-hover table-striped" style="color: black" >
+                            <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Server Type</th>
+                                <th>Flavor Small</th>
+                                <th>Time since running</th>
+                                <th>Bill</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="instance in instanceBillDetail">
+                                <td>{{instance.instanceName}}</td>
+                                <td>{{instance.serverType}}</td>
+                                <td>{{instance.flavorId}}</td>
+                                <td>{{instance.createdTime + " minutes"}}</td>
+                                <td><span id="currency-custom">{{instance.bill| currency:"USD$"}}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Total</strong></td>
+                                <td><strong><span id="currency-tot">{{totalBill| currency:"USD$"}}</span></strong></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                        <div align="center">
+                        <div class="content1" id="first">
+                            <div google-chart="BarChart" ng-model="billReport" class="bigGraph"></div>
+                        </div></div>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10" align="center">
+            <div class="panel panel-default" >
+
+                <div class="panel-heading">
+                    <div align="left"><h2> Billing Policy</h2></div></div>
+                <br>
+
+                <br>
+
+                <div class="panel-body">
+                    <div class="table-responsive" >
+                        <table class="table table-bordered table-hover table-striped" style="color: black" >
+                            <thead>
+                            <tr>
+                                <th>Service Type</th>
+                                <th>Server Type</th>
+                                <th>Flavor Small (per sec)</th>
+                                <th>Flavor Medium (per sec)</th>
+                                <th>Flavor Web (per sec)</th>
+                                <th>Flavor Large (per sec)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Web Server</td>
+                                <td>Apache</td>
+                                <td>$0.001 </td>
+                                <td>$0.002 </td>
+                                <td>$0.003 </td>
+                                <td>$0.003 </td>
+                            </tr>
+                            <tr>
+                                <td>Web Server</td>
+                                <td>NGINX</td>
+                                <td>$0.002 </td>
+                                <td>$0.003 </td>
+                                <td>$0.004 </td>
+                                <td>$0.004 </td>
+                            </tr>
+                            <tr>
+                                <td>Database Server</td>
+                                <td>Oracle SQL</td>
+                                <td>$0.002 </td>
+                                <td>$0.003 </td>
+                                <td>$0.004 </td>
+                                <td>$0.004 </td>
+                            </tr>
+                            <tr>
+                                <td>Database Server</td>
+                                <td>MYSQL</td>
+                                <td>$0.002 </td>
+                                <td>$0.003 </td>
+                                <td>$0.004 </td>
+                                <td>$0.004 </td>
+                            </tr>
+                            <tr>
+                                <td>Database Server</td>
+                                <td>Maria DB</td>
+                                <td>$0.001 </td>
+                                <td>$0.002 </td>
+                                <td>$0.003 </td>
+                                <td>$0.003 </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </snap-content>
+</div>
+
+
+
+

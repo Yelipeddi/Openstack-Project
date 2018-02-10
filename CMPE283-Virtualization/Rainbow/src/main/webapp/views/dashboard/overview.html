@@ -1,0 +1,121 @@
+
+
+<div>
+    <snap-content snap-opt-tap-to-close="false">
+        <br>
+        <br>
+    <!--<center><h1>Welcome {{username}}</h1></center>-->
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="col-lg-1"></div>
+		<div class="col-lg-10" align="center">
+                        <div class="panel panel-default" >
+
+                            <div class="panel-heading">
+                                <div align="left"><h2> Instances Details</h2></div></div>
+                            <br>
+                            <div class="row">
+
+                                <div class="col-lg-2" align="right">
+                                    <button type="submit" class="btn btn-primary btn-lg" ng-click="getServerList()">
+                                        <img src="images/refresh.png" alt="" width="30" height="30">
+                                        Refresh
+                                    </button>
+                                </div>
+
+                                <div class="col-lg-3" align="right">
+                                    <button class="btn btn-primary btn-lg" ng-click="openPopup1()">
+                                        Launch New Web Server
+                                    </button>
+                                </div>
+
+                                <div class="col-lg-3" align="right">
+                                    <button class="btn btn-primary btn-lg" ng-click="openPopup2()">
+                                        Launch New Database Server
+                                    </button>
+                                </div>
+
+                                <div class="col-lg-3" align="right">
+                                    <button class="btn btn-primary btn-lg" ng-click="openPopup3()">
+                                        Launch New Servers for 3 tier Website
+                                    </button>
+                                </div>
+
+
+
+
+                            </div>
+                            <br>
+
+                            <div class="panel-body">
+                                <div class="table-responsive" >
+                                    <table class="table table-bordered table-hover table-striped" style="color: black" >
+                                        <thead>
+                                        <tr>
+                                            <th>Service Name</th>
+                                            <th>State</th>
+                                            <th>Server Type</th>
+                                            <th>Time since created</th>
+                                            <th>Flavor</th>
+                                            <th>Image</th>
+                                            <th>Floating IP</th>
+                                            <th>Pause </th>
+                                            <th>Start /Resume </th>
+                                            <th>Shutdown</th>
+                                            <th>Delete Service</th>
+
+                                        </tr>
+                                        </thead>
+                                        <!--</thead>-->
+                                        <tbody>
+                                        <tr ng-repeat="instance in instances">
+                                            <td>{{instance.instanceName}}
+                                            </td>
+                                            <td>{{instance.status}}
+                                            </td>
+                                            <td>{{instance.serverType}}</td>
+                                            <td>{{instance.createdTime + " minutes"}}</td>
+                                            <td>{{instance.flavorId}}</td>
+                                            <td>{{instance.imageId}}</td>
+                                            <td>
+                                                <div ng-if="instance.floatingIP!=null">
+                                                    {{instance.floatingIP}}<br>
+                                                    <a style="color: #0a76ad" href=http://{{instance.floatingIP}}/index.php target="_blank">Website URL</a>
+                                                </div>
+                                                <div ng-if="instance.floatingIP==null">
+                                                    <center><button type="submit" class="btn btn-info"  ng-click="alocatefip(instance.instanceName)">Allocate</button></center>
+                                                </div>
+                                            </td>
+
+
+
+                                            <!--<div ng-if="instance.floatingIP!=null">-->
+                                                <!--<td>{{instance.floatingIP}}not{{instance.floatingIP!=null}}equal{{instance.floatingIP==null}}</td></div>-->
+                                            <!--<div ng-if="instance.floatingIP==null">-->
+                                            <!--<td><center><button type="submit" class="btn btn-warning"  ng-click="alocatefip(instance.instanceName)">Allocate</button></center></td>-->
+                                            <!--</div>-->
+                                            <td><center><button type="submit" class="btn btn-warning"  ng-click="pauseInstance(instance.instanceName)" ng-disabled="{{instance.status=='PAUSED' ||instance.status=='SHUTOFF'}} ">Pause </button></center></td>
+                                            <td><center><button type="submit" class="btn btn-success"  ng-click="startInstance(instance.instanceName,instance.status)" ng-disabled="{{instance.status=='RUNNING'}}">{{instance.status=="PAUSED"?"Resume":"Start"}} </button></center></td>
+                                            <td><center><button type="submit" class="btn btn-info" ng-click="stopInstance(instance.instanceName)" ng-disabled="{{instance.status=='PAUSED' || instance.status=='SHUTOFF'}}">Shutdown</button></center></td>
+                                            <td><center><button type="submit" class="btn btn-danger" ng-click="deleteInstance(instance.instanceName)">Delete </button></center></td>
+                                            {{instance.floatingIP}}-----
+                                        </tr>
+
+                                            </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+	</snap-content>
+</div> 
+
+
+
+

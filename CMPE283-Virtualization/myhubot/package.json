@@ -1,0 +1,26 @@
+{
+  "name": "lego",
+  "version": "0.0.0",
+  "Bot adapter": "slack",
+  "private": true,
+  "author": "cnvdya@gmail.com",
+  "description": "Helpful bot for my Openstack",
+  "dependencies": {
+    "debug-logger": "^0.4.1",
+    "hubot": "^2.19.0",
+    "hubot-diagnostics": "0.0.2",
+    "hubot-help": "^0.2.2",
+    "hubot-heroku-keepalive": "^1.0.3",
+    "hubot-openstack": "^0.1.1",
+    "hubot-rules": "^0.1.2",
+    "hubot-scripts": "^2.17.2",
+    "hubot-shipit": "^0.2.1",
+    "hubot-slack": "^4.4.0",
+    "moment": "^2.10.6",
+    "pkgcloud": "^1.5.0",
+    "underscore": "^1.8.3"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

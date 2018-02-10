@@ -1,0 +1,74 @@
+<div class="modal-dialog">
+    <div class="container-new" align="center">
+        <div class="modal-body">
+            <div class="row"><div class="col-sm-10">
+                <h2>Launch new instance</h2><br>
+            </div></div>
+            <form name="newInstanceForm"  class="form-group" >
+
+                <div class="row">
+                    <div class="col-sm-10" align="center" ng-show="isError"><label><font color="red">{{errorMessage}}</font></label></div>
+                </div>
+
+                <div class="row"><div class="col-sm-2">
+                    <label style="color: black">Instance Name</label></div>
+                    <div class="col-sm-8">
+                    <input type="text" class="form-control" ng-model="instanceDetail.instanceName" placeholder="Instance name"/>
+                </div></div><br>
+
+                <div class="row"><div class="col-sm-2">
+                    <label style="color: black">Flavor</label></div>
+                    <div class="col-sm-8">
+                        <select class="form-control" ng-model="instanceDetail.flavorId" placeholder="Choose Flavor">
+                            <option ng-repeat="(key, value) in flavors" value="{{key}}">{{key}}</option>
+                        </select>
+                    </div></div><br>
+
+                <div class="row"><div class="col-sm-2">
+                    <label style="color: black">Image type</label></div>
+                    <div class="col-sm-8">
+                        <select class="form-control" ng-model="instanceDetail.imageId">
+                            <option ng-repeat="(key, value) in images" value="{{key}}">{{key}}</option>
+                        </select>
+                    </div>
+                    </div><br>
+
+                <div class="row"><div class="col-sm-2">
+                    <label style="color: black">Web Server Type</label></div>
+                    <div class="col-sm-8">
+                        <select class="form-control" ng-model="instanceDetail.serverType" placeholder="Choose DB Server Type">
+                            <option value="APACHE">APACHE</option>
+                            <option value="NGINX">NGINX</option>
+                        </select>
+                    </div></div><br>
+
+                <div class="row"><div class="col-sm-2">
+                        <label style="color: black">Choose Network</label></div>
+                    <div class="col-sm-8">
+                        <!--<select name="multipleSelect" id="multipleSelect" ng-model=" selectedCountry" multiple-->
+                                <!--ng-options="{Id: country.Id, Country: country.country } as country.country for country in data"></select>-->
+
+                        <select class="form-control" ng-model="instanceDetail.networkIdList" multiple >
+                            <option>CMPE-NET1</option>
+                            <option>CMPE-NET2</option>
+                        </select>
+                    </div>
+                    </div><br>
+
+
+                    <br>
+                    <div class="col-sm-5">
+                        <button  class="btn btn-success" data-ng-click="launchnewInstance(instanceDetail)">Launch</button>
+                    </div>
+                    <div class="col-sm-5">
+                        <button class="btn btn-success" data-ng-click="cancel()">Cancel</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
